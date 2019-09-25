@@ -3,7 +3,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Generate Bril program for polynomial multiplication')
 parser.add_argument('n', type=int, help='the size of the input polynomials')
-parser.add_argument('-p', '--print', action='store_true', help='print the result in the end')
+parser.add_argument('--no-print', action='store_true', help='do not print the result in the end')
 args = parser.parse_args()
 n = args.n
 
@@ -30,7 +30,7 @@ init_vars(a_vars, lambda :random.randint(0,100))
 init_vars(b_vars, lambda :random.randint(0,100))
 init_vars(c_vars, lambda :0)
 mul_symbol(c_vars, a_vars, b_vars)
-if args.print:
+if not args.no_print:
     print_vars(c_vars)
 print("}")
 
